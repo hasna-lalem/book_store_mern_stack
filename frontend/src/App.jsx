@@ -8,6 +8,7 @@ import ShowBook from './pages/ShowBook'
 import CreateBook from './pages/CreateBook'
 import DeleteBook from './pages/DeleteBook'
 import EditBook from './pages/EditBook'
+import Login from './components/login'
 function App() {
   
 
@@ -15,6 +16,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={<Home/>} />
+        <Route path='/login' element={<Login />} />
         <Route path='/books/details/:id' element={<ShowBook />} />
         <Route path='/books/create' element={<CreateBook />} />
         <Route path='/books/delete/:id' element={<DeleteBook />} />

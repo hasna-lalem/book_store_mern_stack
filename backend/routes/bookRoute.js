@@ -1,5 +1,6 @@
 import express from 'express'
 
+import { verifyToken, isAdmin } from '../middlewares/auth.mw.js';
 import {Book} from '../models/bookModel.js'
 
 const router = express.Router()
@@ -62,7 +63,7 @@ router.get('/:id',async (req, res) => {
     }
 })
 
-router.put('/:id',async (req, res) => {
+router.put('/:id', [verifyToken , isAdmin], async (req, res) => {
     try{
         const {title, author, publishYear} = req.body
 
@@ -88,7 +89,7 @@ router.put('/:id',async (req, res) => {
     }
 })
 
-router.delete('/:id', async (req, res) => {
+router.delete('/:id',[verifyToken , isAdmin], async (req, res) => {
     try{
         const {id} = req.params;
 
